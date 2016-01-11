@@ -74,6 +74,18 @@ module.exports = {
       .fail(function (error) {
         next(error);
       });
-  }
+    },
+
+    changeName: function(req, res, next){
+      console.log(req.body.origName);
+      res.send("hello world");
+      // findUser({ name: req.body.dataObj.origName}, function (err, user) {
+      //   console.log("=================================", user);
+      //   user.name = req.body.dataObj.newName;
+        // user.save(function(req, res){
+        //   res.JSON(req.body);
+        // });
+      //});
+    }
 
 };
