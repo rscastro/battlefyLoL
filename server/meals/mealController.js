@@ -50,6 +50,7 @@ module.exports = {
       next(error);
     });
   },
+
   //delete a meal by id
   deleteMeal: function (req, res) {
     var id = req.body.id;
@@ -59,7 +60,27 @@ module.exports = {
       } else {
         res.send('deleted');
       }
-      });
-    }
-};
+    });
+  },
 
+  updateMeal: function(req, res, next){
+    //client updates the meal information by supplying the id as well as the updated information
+    Meal.findOne({_id:req.body.id}, function (err, meal) {
+      if(err){
+        res.send(err);
+      }
+      //every property the client supplies gets updated
+      for(var key in req.body) {
+        if(req.body.hasOwnProperty(key)){
+          console.log("key is ",key);
+          console.log("req.body[key] is ", req.body[key])
+          meal[key]=req.body[key];
+        }
+      }
+      //the updated meal is saved to the database
+      meal.save(function(err){
+        res.json(meal);
+      });
+    });
+  }
+}

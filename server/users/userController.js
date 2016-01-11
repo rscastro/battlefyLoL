@@ -76,16 +76,23 @@ module.exports = {
       });
     },
 
-    changeName: function(req, res, next){
-      console.log(req.body.origName);
-      res.send("hello world");
-      // findUser({ name: req.body.dataObj.origName}, function (err, user) {
-      //   console.log("=================================", user);
-      //   user.name = req.body.dataObj.newName;
-        // user.save(function(req, res){
-        //   res.JSON(req.body);
-        // });
-      //});
-    }
+  updateUser: function(req, res, next){
+    //client changes the user information by putting in the original user name called searchName
+    User.findOne({username: req.body.searchName}, function (err, user) {
+      if(err){
+        res.send(err);
+      }
+      //every property the client supplies gets updated.
+      for(var key in req.body) {
+        if(req.body.hasOwnProperty(key)){
+          user[key]=req.body[key];
+        }
+      }
+      //the updated user is saved to the database
+      user.save(function(err){
+        res.json(user);
+      });
+    });
+  }
 
 };
