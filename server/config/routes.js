@@ -10,9 +10,10 @@ module.exports = function (app, express) {
   //for users
   app.post('/api/users/signin', userController.signin);
   app.post('/api/users/signup', userController.signup);
-
+  app.put('/api/users/updateuser', userController.updateUser);
+  app.put('/api/meals/updatemeal', mealController.updateMeal);
   //for meals
-  app.post('/api/meals/meal', mealController.deleteMeal);
+  app.put('/api/meals/meal', mealController.deleteMeal);
   app.get('/api/meals', mealController.allMeals);
   app.post('/api/meals', mealController.newMeal);
 

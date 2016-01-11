@@ -74,6 +74,25 @@ module.exports = {
       .fail(function (error) {
         next(error);
       });
+    },
+
+  updateUser: function(req, res, next){
+    //client changes the user information by putting in the original user name called searchName
+    User.findOne({username: req.body.searchName}, function (err, user) {
+      if(err){
+        res.send(err);
+      }
+      //every property the client supplies gets updated.
+      for(var key in req.body) {
+        if(req.body.hasOwnProperty(key)){
+          user[key]=req.body[key];
+        }
+      }
+      //the updated user is saved to the database
+      user.save(function(err){
+        res.json(user);
+      });
+    });
   }
 
 };
