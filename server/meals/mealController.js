@@ -72,8 +72,6 @@ module.exports = {
       //every property the client supplies gets updated
       for(var key in req.body) {
         if(req.body.hasOwnProperty(key)){
-          console.log("key is ",key);
-          console.log("req.body[key] is ", req.body[key])
           meal[key]=req.body[key];
         }
       }
@@ -83,4 +81,5 @@ module.exports = {
       });
     });
   }
-}
+};
+
