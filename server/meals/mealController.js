@@ -12,6 +12,16 @@ var findAllMeals = Q.nbind(Meal.find, Meal);
 
 //export module allMeals and newMeal
 module.exports = {
+  getOne: function (req, res) {
+    var id = req.body.id;
+    Meal.findOne({ _id: req.body.id }, function(err, meal) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(meal);
+      }
+    });
+  },
   //returns all meals the database as the response.
   allMeals: function (req, res, next) {
     findAllMeals({})
@@ -22,6 +32,8 @@ module.exports = {
         next(error);
       });
   },
+
+
 
   //creates a meal that gets saved to the database.
   newMeal: function (req, res, next) {
