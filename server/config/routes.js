@@ -16,6 +16,7 @@ module.exports = function (app, express) {
   app.put('/api/meals/meal', mealController.deleteMeal);
   app.get('/api/meals', mealController.allMeals);
   app.post('/api/meals', mealController.newMeal);
+  app.post('/api/meal', mealController.getOne);
 
   //for other
   app.get('/api/*', mealController.allMeals);
