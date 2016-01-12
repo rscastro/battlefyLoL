@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="styles/style.css">
 
+  <script src="lib/lodash/lodash.min.js"></script>
   <script src="lib/jquery/dist/jquery.min.js"></script>
   <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="lib/angular/angular.min.js"></script>
@@ -20,8 +21,6 @@
 
   <script src="app/meals/meals.js"></script>
   <script src="app/auth/auth.js"></script>
-  <script src="app/meals/meals.js"></script>
-
   <script src="app/services/services.js"></script>
   <script src="app/app.js"></script>
 </head>
@@ -29,15 +28,16 @@
   <div class="header-block"></div>
   <div class="header">
     <nav class="nav">
-      <li class="home"><a href="#">Homecooked</a></li>
-      <li><a href="#/signin">Sign In</a></li>
-      <li><a href="#/signup">Sign Up</a></li>
-      <li><a href="#/cook">Cook a Meal</a></li>
-      <li><a href="#/logout">Logout</a></li>
+      <li class="home"><a ui-sref="meals">Homecooked</a></li>
+      <li><a ui-sref="meals.signin">Sign In</a></li>
+      <li><a ui-sref="meals.signup">Sign Up</a></li>
+      <li><a ui-sref="meals.cook">Cook a Meal</a></li>
+      <li><a ui-sref="logout">Logout</a></li>
     </nav>
   </div>
 
-  <div ui-view></div>
+  <div ui-view="master"></div>
+  <div class="sideview" ui-view="sideview"></div>
 
 </body>
 </html>

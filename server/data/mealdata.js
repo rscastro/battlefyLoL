@@ -7,7 +7,7 @@ var mealdata = [
     description: 'really good donuts',
     date: '2012-01-01',
     time: 'lunch',
-    username: 'Penguin Power'
+    username: 'PenguinPower'
   },
   {
     title: 'Fried chicken',
@@ -31,7 +31,7 @@ var mealdata = [
     description: 'sushirrito',
     date: '2015-10-11',
     time: 'lunch',
-    username: 'Penguin Power'
+    username: 'PenguinPower'
   },
   {
     title: 'Escargot',
@@ -87,7 +87,7 @@ var mealdata = [
     description: 'hawaii',
     date: '2016-01-13',
     time: 'lunch',
-    username: 'Nancy'
+    username: 'Sparkles'
   }
 ];
 

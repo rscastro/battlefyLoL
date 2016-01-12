@@ -1,46 +1,73 @@
 angular.module('homecooked', [
-  // 'homecooked.services',
   'homecooked.meals',
-  // 'homecooked.create',
   'homecooked.auth',
   'ui.router'
 ])
-.config(function($stateProvider, $urlRouterProvider) {
+.constant('_', window._)
+.constant('$', window.$)
+.config(function ($stateProvider, $urlRouterProvider) {
     
     $urlRouterProvider.otherwise('/meals');
     
     $stateProvider
         
         // HOME STATES AND NESTED VIEWS ========================================
-        .state('home', {
-            url: '/',
-            templateUrl: 'app/meals/meals.html',
-            controller: 'MealsController',
-        })
 
         .state('meals', {
-            url: '/meals',
-            templateUrl: 'app/meals/meals.html',
-            controller: 'MealsController',
-            authenticate: true
+          url: '/meals',
+          views: {
+            "master": {
+              templateUrl: 'app/meals/meals.html',
+              controller: 'MealsController',
+            },
+          },
+          // authenticate: true
         })
         
+        .state('meals.signin', {
+          url: '/signin',
+          views: {
+            "sideview@": {
+              templateUrl: 'app/auth/signin.html',
+              controller: 'AuthController'
+            }
+          },
+        })
         .state('signin', {
             url: '/signin',
             templateUrl: 'app/auth/signin.html',
             controller: 'AuthController'
         })
 
-        .state('signup', {
-            url: '/signup',
-            templateUrl: 'app/auth/signup.html',
-            controller: 'AuthController'
+        .state('meals.signup', {
+          url: '/signup', 
+          views: {
+            "sideview@": {
+                templateUrl: 'app/auth/signup.html',
+                controller: 'AuthController'
+            }
+          }
         })
 
-        .state('cook', {
+        .state('meals.cook', {
             url: '/cook',
-            templateUrl: 'app/meals/create.html',
-            controller: 'CookController',
+            views: {
+              "sideview@": {
+                templateUrl: 'app/meals/create.html',
+                controller: 'CookController'
+              }
+            },
+            authenticate: true
+        })
+
+        .state('meals.details', {
+            url: '/details/:mealid',
+            views: {
+              "sideview@": {
+                templateUrl: 'app/meals/details.html',
+                controller: 'DetailsController'
+              }
+            },
             authenticate: true
         })
 
@@ -67,9 +94,8 @@ angular.module('homecooked', [
 .run(function ($rootScope, $state, $location, Auth) {
   $rootScope.$on('$stateChangeStart', function (evt, toState, toParams, fromState, fromParams) {
     if (toState.authenticate && !Auth.isAuth()) {
-      $state.transitionTo('signin');
+      $state.transitionTo('meals.signin');
       evt.preventDefault();
-      //$location.path('/signin');
     }
   });
 });

@@ -5,7 +5,8 @@
     </form>
   </div>
   <div class="foodcart">
-    <div class="fooditem col-lg-3 col-md-3 col-sm-4 col-xs-6" ng-repeat="meal in mealsCtrl.meals | filter : {name : mealsCtrl.search}" ng-mouseenter="mealsCtrl.makeActive(meal)" ng-mouseleave="mealsCtrl.makeInactive(meal)">
+    <div class="fooditem col-lg-3 col-md-3 col-sm-4 col-xs-6" ng-repeat="meal in mealsCtrl.meals | filter : {title : mealsCtrl.search}" ng-mouseenter="mealsCtrl.makeActive(meal)" ng-mouseleave="mealsCtrl.makeInactive(meal)">
+      <a ng-href="/#/meals/details/{{meal._id}}">
       <div class="fooditem-image" ng-class="{'fooditem-image-active': meal.isActive}">
         <img ng-src="{{meal.picture}}">
       </div>
@@ -13,6 +14,9 @@
         <h3>{{meal.title}}</h3>
         <h4>{{meal.description}}</h4>
       </div>
+      </a>
     </div>
+    </a>
   </div>
 </div>
+
