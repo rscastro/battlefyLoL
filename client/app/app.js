@@ -73,8 +73,13 @@ angular.module('homecooked', [
 
         .state('logout', {
             url: '/logout',
-            templateUrl: 'app/auth/signin.html',
-            controller: 'AuthController'
+            views: {
+              "sideview@": {
+                 templateUrl: 'app/auth/signin.html',
+                controller: 'AuthController'
+              }
+            },
+           
         })
 })
 
