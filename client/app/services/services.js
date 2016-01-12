@@ -1,6 +1,6 @@
 angular.module('homecooked.services', [])
 
-.factory('Auth', function ($http, $location, $window) {
+.factory('Auth', function ($http, $location, $window, $state) {
   var signin = function (user) {
     console.log('SIGNIN suck')
     return $http.post('/api/users/signin', user)
@@ -28,7 +28,7 @@ angular.module('homecooked.services', [])
     $window.localStorage.removeItem('home.cooked');
     $window.localStorage.removeItem('home.cooked.user');
 
-    $location.path('/signin');
+    $state.transitionTo('meals');
   };
 
   return {
@@ -113,3 +113,22 @@ angular.module('homecooked.services', [])
     addOne: addOne
   }
 }) 
+
+.factory('Sidebar', function() {
+  var showSidebar = function() {
+    $('.sideview').animate({
+      right: '0px'
+    }); 
+  };
+
+  var hideSidebar = function() {
+    $('.sideview').animate({
+      right: '-450px'
+    }); 
+  }
+
+  return {
+    showSidebar: showSidebar,
+    hideSidebar: hideSidebar
+  }
+})

@@ -32,7 +32,7 @@ var createMeal = function(meal) {
     description: meal.description,
     date: meal.date,
     time: meal.time,
-    username: meal.username
+    user: meal.username
   });
 };
 

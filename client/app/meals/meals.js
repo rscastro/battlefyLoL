@@ -1,7 +1,6 @@
 angular.module('homecooked.meals', [
   'homecooked.services'
 ])
-
 .controller('MealsController', function (Meals) {
   // this.meals = stubDataFactory.meals;
   var me = this;
@@ -24,12 +23,19 @@ angular.module('homecooked.meals', [
       return resp.data;
     });
   };
+
 })
 
-.controller('CookController', function ($scope, $location, Meals) {
+.controller('CookController', function ($scope, $location, Meals, Sidebar) {
   var me = this;
-
   $scope.meal = {};
+
+  $scope.initialize = function() {
+    Sidebar.showSidebar();
+  };
+  $scope.hideSideview = function() {
+    Sidebar.hideSidebar();
+  };
 
   $scope.submitHandler = function(meal) {
     Meals.addOne($scope.meal).then(function () {
@@ -37,4 +43,29 @@ angular.module('homecooked.meals', [
     });
   };
 
+  $scope.initialize();
+})
+
+.controller('DetailsController', function ($scope, Sidebar, $stateParams, Meals) {
+  $scope.meal = {};
+
+  $scope.initialize = function() {
+    Meals.getAll().then(function (resp) {
+      console.log(resp.data);
+      $scope.meal = _.find(resp.data, function (meal) {
+        return $stateParams.mealid === meal._id;
+      })
+      return $scope.meal.user;
+    })
+    .then(function (user) {
+      // TODO: look up user info here
+    });
+    Sidebar.showSidebar();
+  };
+
+  $scope.hideSideview = function() {
+    Sidebar.hideSidebar();
+  };
+
+  $scope.initialize();
 })
