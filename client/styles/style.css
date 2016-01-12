@@ -78,6 +78,7 @@ h4 {
   top: 0px;
   z-index: 3;
   box-shadow: -10px 0px 10px -10px #111;
+  overflow-y: scroll;
 }
 
 .hide-sideview {
