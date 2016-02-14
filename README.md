@@ -46,7 +46,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](https://github.com/radical-chamomile/dinner-rev-OOOOO-lution/issues)
+View the project roadmap [here](https://github.com/rscastro/homecooked/issues)
 
 
 ## Contributing
