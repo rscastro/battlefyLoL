@@ -2,7 +2,6 @@ angular.module('homecooked.meals', [
   'homecooked.services'
 ])
 .controller('MealsController', function (Meals) {
-  // this.meals = stubDataFactory.meals;
   var me = this;
 
   this.makeActive = function(meal) {
@@ -58,7 +57,6 @@ angular.module('homecooked.meals', [
       return $scope.meal.user;
     })
     .then(function (user) {
-      // TODO: look up user info here
     });
     Sidebar.showSidebar();
   };
