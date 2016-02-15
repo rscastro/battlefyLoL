@@ -1,5 +1,6 @@
 # Home Cooked
 > [Home Page](https://home-cooked.herokuapp.com)
+
 > Application that allows users to search for home cooked meals that they can pay to have others cook it for them. The platform also allows users to post home cooked meals themselves for others to search for
 ## Team
 
