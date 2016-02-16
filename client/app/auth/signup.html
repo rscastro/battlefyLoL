@@ -2,7 +2,7 @@
   <form name="signupForm" ng-submit='signupForm.$valid && signup()'>
     <div class='top-row'>
       <div class='field-wrap'>
-  		<label ng-class='{active: signupForm.firstname.$dirty, highlight: signupForm.firstname.$dirty}' for="firstname">First Name</label>
+      <label ng-class='{active: signupForm.firstname.$dirty, highlight: signupForm.firstname.$dirty}' for="firstname">First Name</label>
        <input type="text" id="firstname" name="firstname" ng-model="user.firstName" ng-minlength="2" ng-maxlength="20" ng-pattern="/^[a-zA-Z]+$/" required  />
    <span ng-show="signupForm.firstname.$error.required && signupForm.firstname.$dirty">required</span>
    <span style='color: red' ng-show="!signupForm.firstname.$error.minLength && !signupForm.firstname.$error.maxLength && signupForm.firstname.$error.pattern && signupForm.firstname.$dirty">Letters only</span>

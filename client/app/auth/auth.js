@@ -42,7 +42,6 @@ angular.module('homecooked.auth', [])
   	});
   };
   if ($location.$$path === '/logout'){
-    console.log('YOLO')
     Auth.signout();
   }
 
