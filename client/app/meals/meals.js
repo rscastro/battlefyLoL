@@ -50,7 +50,6 @@ angular.module('homecooked.meals', [
 
   $scope.initialize = function() {
     Meals.getAll().then(function (resp) {
-      console.log(resp.data);
       $scope.meal = _.find(resp.data, function (meal) {
         return $stateParams.mealid === meal._id;
       })
