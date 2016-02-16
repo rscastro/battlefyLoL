@@ -8,7 +8,6 @@ angular.module('homecooked', [
 .config(function ($stateProvider, $urlRouterProvider) {
     
     $urlRouterProvider.otherwise('/meals');
-    
     $stateProvider
         
         // HOME STATES AND NESTED VIEWS ========================================
@@ -83,6 +82,7 @@ angular.module('homecooked', [
         })
 })
 
+// attach tokens to requests
 .factory('AttachTokens', function ($window) {
   var attach = {
     request: function (object) {
@@ -96,6 +96,7 @@ angular.module('homecooked', [
   };
   return attach;
 })
+// run authentication checks on each change in state
 .run(function ($rootScope, $state, $location, Auth) {
   $rootScope.$on('$stateChangeStart', function (evt, toState, toParams, fromState, fromParams) {
     if (toState.authenticate && !Auth.isAuth()) {

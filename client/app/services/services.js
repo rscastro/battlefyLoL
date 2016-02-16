@@ -2,9 +2,7 @@ angular.module('homecooked.services', [])
 
 .factory('Auth', function ($http, $location, $window, $state) {
   var signin = function (user) {
-    console.log('SIGNIN suck')
     return $http.post('/api/users/signin', user)
-    
   };
 
   var signup = function (user) {
@@ -21,13 +19,11 @@ angular.module('homecooked.services', [])
   var isAuth = function () {
     return !!$window.localStorage.getItem('home.cooked');
     // return true;
-
   };
 
   var signout = function () {
     $window.localStorage.removeItem('home.cooked');
     $window.localStorage.removeItem('home.cooked.user');
-
     $state.transitionTo('meals');
   };
 
