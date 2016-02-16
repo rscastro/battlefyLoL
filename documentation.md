@@ -67,7 +67,7 @@ Front-End/Client Side
 * Auth service and meals service found in this file. This is the connection between clientside and the API presented by the server. All calls in the service file return a promise
 
 
-Back-End/Server & Database
+### Back-End/Server & Database
 
 * Primary File: /server/server.js
     * Creates basic server, configure server with middleware and routes
