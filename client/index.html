@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Homecooked</title>
+  <title>Battlefy</title>
 
   <link href='https://fonts.googleapis.com/css?family=Dosis|Poiret+One|Lobster' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="styles/reset.css">
@@ -19,23 +19,12 @@
   <script src="lib/angular/angular.min.js"></script>
   <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-  <script src="app/meals/meals.js"></script>
-  <script src="app/auth/auth.js"></script>
+  <script src="app/home/home.js"></script>
   <script src="app/services/services.js"></script>
   <script src="app/app.js"></script>
 </head>
-<body ng-app="homecooked">
-  <div class="header-block"></div>
-  <div class="header">
-    <nav class="nav">
-      <li class="home"><a ui-sref="meals">Homecooked</a></li>
-      <li><a ui-sref="meals.signin">Sign In</a></li>
-      <li><a ui-sref="meals.signup">Sign Up</a></li>
-      <li><a ui-sref="meals.cook">Cook a Meal</a></li>
-      <li><a ui-sref="logout">Logout</a></li>
-
-    </nav>
-  </div>
+<body ng-app="battlefy">
+ 
 
   <div ui-view="master"></div>
   <div class="sideview" ui-view="sideview"></div>

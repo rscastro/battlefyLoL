@@ -1,0 +1,78 @@
+<div class="container-fluid" ng-controller="MainController as mainCtrl" ng-init="mainCtrl.initialize()">
+  <div class="search">
+    <form>
+      <input name="search" type="text" ng-model="mainCtrl.search" placeholder="ENTER YOUR SUMMONER ID"></input>
+      <button ng-click='mainCtrl.lolUser()'>FIND</button>
+    </form>
+
+  </div>
+  <div class='row'>
+  <div class='col-md-2 col-xs-6' id='page'>
+    <span class='summonerLevel' ng-hide='mainCtrl.noUser'>THERE IS NO SUMMONER WITH THAT ID</span>
+    <div ng-show='mainCtrl.profileShow'>
+    <span ng-show='mainCtrl.profileShow'><img ng-src='http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{mainCtrl.randomChampion}}.png'></span>
+  <span class='summonerName' ng-show='mainCtrl.profileShow'>{{mainCtrl.userInfo.name}} </span>
+  <span class='summonerLevel' ng-show='mainCtrl.profileShow'>{{mainCtrl.userInfo.summonerLevel}}</span>
+  <span class='summonerLevel' ng-show='mainCtrl.profileShow'>League: {{mainCtrl.leagueinfoleague}}</span>
+  <span class='summonerLevel' ng-show='mainCtrl.profileShow'>Division: {{mainCtrl.leagueinfodivision}}</span>
+  <button ng-click="mainCtrl.order('physical')" class='btn btn-success'>Most Physical Damage</button>
+  <button ng-click="mainCtrl.order('magic')" class='btn btn-primary'>Most Magic Damage</button>
+  <button ng-click="mainCtrl.order('assists')" class='btn btn-danger'>Most Assists</button>
+
+
+
+</div>
+</div>
+<div ng-show='mainCtrl.profileShow' id='list' class='col-md-10 col-s-6 col-xs-12'>
+  <span><b>Player total</b>/All Champions Average</span>
+  <div class='card' ng-repeat='champ in mainCtrl.userChampionList'>
+    <div class='face'>
+    <span class='cardtitle'>{{champ.champName}}</span>
+    <img class='cardimage' src='http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{champ.champName}}.png'>
+  </div>
+    <div class='listinfo'>
+      <span class='statinfo'>
+        <label>Total Champion Kills: </label>
+     <b> {{champ['stats']['totalChampionKills']}} </b>/ {{mainCtrl.averages['totalChampionKills']}}
+
+    <span class='statinfo'>
+        <label>Total Damange Dealt: </label>
+     <b> {{champ['stats']['totalDamageDealt']}} </b> / {{mainCtrl.averages['totalDamageDealt']}}
+    </span>
+    <span class='statinfo'>
+        <label>Total Damage Taken: </label>
+     <b> {{champ['stats']['totalDamageTaken']}} </b> / {{mainCtrl.averages['totalDamageTaken']}}
+    </span>
+    </div>
+    <div class='listinfo'>
+      <span class='statinfo'>
+        <label>Max Deaths: </label>
+     <b> {{champ['stats']['maxNumDeaths']}} </b>/ {{mainCtrl.averages['maxNumDeaths']}}
+
+    <span class='statinfo'>
+        <label>Total Assists: </label>
+     <b> {{champ['stats']['totalAssists']}} </b> / {{mainCtrl.averages['totalAssists']}}
+    </span>
+    <span class='statinfo'>
+        <label>Most Champions Killed: </label>
+      <b>{{champ['stats']['maxChampionsKilled']}} </b>/ {{mainCtrl.averages['maxChampionsKilled']}}
+    </span>
+    </div>
+    <div class='listinfo'>
+      <span class='statinfo'>
+        <label>Total Gold Earned: </label>
+     <b> {{champ['stats']['totalGoldEarned']}} </b>/ {{mainCtrl.averages['totalGoldEarned']}}
+
+    <span class='statinfo'>
+        <label>Total Magic Damage Dealt: </label>
+      {{champ['stats']['totalMagicDamageDealt']}} / {{mainCtrl.averages['totalMagicDamageDealt']}}
+    </span>
+    <span class='statinfo'>
+        <label>Total Physical Damage Dealt: </label>
+     <b> {{champ['stats']['totalPhysicalDamageDealt']}} </b>/ {{mainCtrl.averages['totalPhysicalDamageDealt']}}
+    </span>
+    </div>
+
+</div>
+</div>
+</div>
